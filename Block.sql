@@ -46,7 +46,17 @@ begin
     -- For loop
     for i in 1..5
     loop
-        dbms_output.put_line('foe loop i : ' || i);
+        null;
+        --dbms_output.put_line('foe loop i : ' || i);
+    end loop;
+    
+    -- While loop and continue
+    l_i := 1;
+    while l_i <= 5
+    loop
+        l_i := l_i+1;
+        continue when l_i = 3;
+        dbms_output.put_line('while loop i : ' || l_i);
     end loop;
     
 exception

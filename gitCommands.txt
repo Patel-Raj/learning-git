@@ -8,4 +8,5 @@ git commit => To commit all the things that are staged area. It will open VIM to
 git commit -m 'commit msg' => To commit with a message.
 Create a file as .gitignore and add the file path which we want to ignore in our commits.
 git remote => Lists the remote repository.
-git remote add origin https://github.com/Patel-Raj/test.git
+git remote add origin https://github.com/Patel-Raj/learning-git.git
+git push -u origin master
