@@ -4,6 +4,8 @@ declare
     l_temp_string varchar2(2); 
     l_grade char(1);
     l_i number;
+    l_person_number per_all_people_f.person_number%type;
+    r_dir_card pay_dir_cards_f%ROWTYPE;
 begin
     --l_temp_string := 'abc';
     if true then
@@ -56,9 +58,17 @@ begin
     loop
         l_i := l_i+1;
         continue when l_i = 3;
-        dbms_output.put_line('while loop i : ' || l_i);
+        --dbms_output.put_line('while loop i : ' || l_i);
     end loop;
     
+-- Exception handling:
+--    select person_number into l_person_number
+--    from per_All_people_F
+--    where person_id = -1;
+    -- Records
+    select * into r_dir_card from pay_dir_cards_f where dir_card_id = 100010027300361;
+    
+    dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
