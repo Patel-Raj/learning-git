@@ -6,6 +6,12 @@ declare
     l_i number;
     l_person_number per_all_people_f.person_number%type;
     r_dir_card pay_dir_cards_f%ROWTYPE;
+    type r_card_t is record
+    (
+        l_dir_card_id pay_dir_cards_f.dir_Card_id%type,
+        l_creation_date pay_dir_cards_f.creation_date%type 
+    );
+    r_card r_card_t;
 begin
     --l_temp_string := 'abc';
     if true then
@@ -68,6 +74,9 @@ begin
     -- Records
     select * into r_dir_card from pay_dir_cards_f where dir_card_id = 100010027300361;
     
+    --dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+    -- Type based cursor
+    select dir_Card_id, creation_Date into r_card from pay_dir_cards_f where dir_card_id = 100010027300361;
     dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
 exception
     when zero_divide then
