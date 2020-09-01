@@ -19,6 +19,10 @@ declare
     100010032874506,
     100010032876106);
     
+    CURSOR c_dir_cards_p(l_dir_card_id pay_dir_cards_f.dir_Card_id%type := 1)
+    is
+    select * from pay_dir_cards_f where dir_card_id = l_dir_card_id;
+    
 begin
     --l_temp_string := 'abc';
     if true then
@@ -92,10 +96,23 @@ begin
     loop
         fetch c_dir_cards into r_dir_card;
         exit when c_dir_cards%notfound;
-        dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+        --dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
         
     end loop;
     close c_dir_cards;
+    
+    open c_dir_cards_p(100010032874506);
+    loop
+        fetch c_dir_cards_p into r_dir_card;
+        exit when c_dir_cards_p%notfound;
+        --dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+    end loop;
+    close c_dir_cards_p;
+    
+    for rec in c_dir_cards_p(100010032874506)
+    loop
+        dbms_output.put_line('rec.dir_card_id : ' || rec.dir_card_id);
+    end loop;
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
