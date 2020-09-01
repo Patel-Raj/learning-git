@@ -12,6 +12,13 @@ declare
         l_creation_date pay_dir_cards_f.creation_date%type 
     );
     r_card r_card_t;
+    
+    cursor c_dir_cards is 
+    select * from pay_dir_cards_f
+    where dir_card_id in(
+    100010032874506,
+    100010032876106);
+    
 begin
     --l_temp_string := 'abc';
     if true then
@@ -77,7 +84,18 @@ begin
     --dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
     -- Type based cursor
     select dir_Card_id, creation_Date into r_card from pay_dir_cards_f where dir_card_id = 100010027300361;
-    dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+    --dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+    
+    -- Cursor
+    open c_dir_cards;
+    
+    loop
+        fetch c_dir_cards into r_dir_card;
+        exit when c_dir_cards%notfound;
+        dbms_output.put_line('r_dir_card.dir_card_id : ' || r_dir_card.dir_card_id);
+        
+    end loop;
+    close c_dir_cards;
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
