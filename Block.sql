@@ -1,4 +1,9 @@
 set serveroutput on;
+--create or replace procedure r_temp_proc
+--is
+--begin
+--    dbms_output.put_line('r_temp_proc');
+--end;
 declare
     l_temp_number number := 10;
     l_temp_string varchar2(2); 
