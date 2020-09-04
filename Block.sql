@@ -23,6 +23,9 @@ declare
     is
     select * from pay_dir_cards_f where dir_card_id = l_dir_card_id;
     
+    type t_arr is table of number;
+    natural_numbers t_arr := t_arr();
+    counter number := 0;
 begin
     --l_temp_string := 'abc';
     if true then
@@ -111,8 +114,18 @@ begin
     
     for rec in c_dir_cards_p(100010032874506)
     loop
-        dbms_output.put_line('rec.dir_card_id : ' || rec.dir_card_id);
+        null;
+        --dbms_output.put_line('rec.dir_card_id : ' || rec.dir_card_id);
     end loop;
+    dbms_output.put_line(natural_numbers.count);
+    for rec in c_dir_cards
+    loop
+        counter := counter +1;
+        natural_numbers.extend;
+        natural_numbers(counter) := rec.dir_card_id;
+    end loop;
+    dbms_output.put_line(natural_numbers.count);
+        
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
