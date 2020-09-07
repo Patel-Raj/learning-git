@@ -31,6 +31,13 @@ declare
     type t_arr is table of number;
     natural_numbers t_arr := t_arr();
     counter number := 0;
+    
+    -- procedure
+    procedure printIt(temp_str in varchar2 default 'ABCD')
+    is
+    begin
+        dbms_output.put_line(temp_str);
+    end printIt;
 begin
     --l_temp_string := 'abc';
     if true then
@@ -130,7 +137,8 @@ begin
         natural_numbers(counter) := rec.dir_card_id;
     end loop;
     dbms_output.put_line(natural_numbers.count);
-        
+    
+    printIt('PQRS');
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
