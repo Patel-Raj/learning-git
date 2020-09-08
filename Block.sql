@@ -45,8 +45,8 @@ declare
     is
         l_creation_date date;
     begin
-        select nvl(max(dc.creation_date),to_date('01-01-1001','DD-MM-YYYY'))
-        from pay_dir_cards_f where dir_card_id = l_card_id;
+        select nvl(max(dc.creation_date),to_date('01-01-1001','DD-MM-YYYY')) into l_creation_date
+        from pay_dir_cards_f dc where dc.dir_card_id = l_card_id;
         return l_creation_date;
     end getCreationDate;
     
