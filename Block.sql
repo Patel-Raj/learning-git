@@ -38,6 +38,18 @@ declare
     begin
         dbms_output.put_line(temp_str);
     end printIt;
+    
+    -- function
+    function getCreationDate(l_card_id number)
+    return date
+    is
+        l_creation_date date;
+    begin
+        select nvl(max(dc.creation_date),to_date('01-01-1001','DD-MM-YYYY'))
+        from pay_dir_cards_f where dir_card_id = l_card_id;
+        return l_creation_date;
+    end getCreationDate;
+    
 begin
     --l_temp_string := 'abc';
     if true then
@@ -139,6 +151,7 @@ begin
     dbms_output.put_line(natural_numbers.count);
     
     printIt('PQRS');
+    dbms_output.put_line(getCreationDate(100010032874506));
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
