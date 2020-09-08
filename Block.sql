@@ -153,6 +153,7 @@ begin
     printIt('PQRS');
     dbms_output.put_line(getCreationDate(100010032874506));
     dbms_output.put_line(temp_package.counter);
+    dbms_output.put_line(temp_package.doubleIt(10));
 exception
     when zero_divide then
         dbms_output.put_line('abcd');
