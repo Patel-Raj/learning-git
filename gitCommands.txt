@@ -1,3 +1,4 @@
+Refer : Git & GitHub Crash Course For Beginners => https://youtu.be/SWYqp7iY_Tc
 git init => To init a folder as git local repository
 git config --global user.name 'Raj Patel'
 git config --global user.email 'abc@gmail.com'
