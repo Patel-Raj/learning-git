@@ -10,3 +10,4 @@ Create a file as .gitignore and add the file path which we want to ignore in our
 git remote => Lists the remote repository.
 git remote add origin https://github.com/Patel-Raj/learning-git.git
 git push -u origin master
+git clone https://github.com/Patel-Raj/learning-git.git => To clone someones repository into our local machine.
