@@ -3,7 +3,7 @@ git config --global user.name 'Raj Patel'
 git config --global user.email 'abc@gmail.com'
 git add => To add files to the staging area
 git status => To check status
-git -rm --cached <file> => To remove the file from local repository
+git -rm --cached <file> => To remove the file from staging area
 git commit => To commit all the things that are staged area. It will open VIM to enter the commit msg.
 git commit -m 'commit msg' => To commit with a message.
 Create a file as .gitignore and add the file path which we want to ignore in our commits.
