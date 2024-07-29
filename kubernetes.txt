@@ -1,0 +1,16 @@
+kubectl create deployment validator-depoyment --image=patelraj22777/validator
+kubectl expose deployment validator-deployment --port=8080 --target-port=8080
+kubectl get pods -o wide
+kubectl expose deployment validator-deployment --type=NodePort --port=8080 --target-port=8080
+
+# Rollout deployments:
+kubectl set image deployment/validator-deployment validator-img=patelraj22777/validator-img:2.0.0
+kubectl rollout status deploy validator-deployment
+
+kubectl exec -it validator-deployment-5d6649f999-fvrdc  -- /bin/bash
+
+
+kubectl create deployment validator-depoyment --image=patelraj22777/validator-img
+
+
+kubectl exec -it calculator-deployment-5c6dd84485-992n8  -- /bin/bash
